@@ -28,4 +28,10 @@ Route::prefix('/keep')->group(function () {
     Route::get('/', [KeepinhoController::class,'index'])->name('keep');
 
     Route::post('/gravar', [KeepinhoController::class,'gravar'])->name('keep.gravar');
+
+    Route::get('/editar/{nota}', [KeepinhoController::class, 'editar'])->name('keep.editar'); // Formulário
+
+    Route::put('/editar', [KeepinhoController::class, 'editar'])->name('keep.editarGravar'); // Ação
+
+    Route::delete('/apagar/{nota}', [KeepinhoController::class,'apagar'])->name('keep.apagar');
 });
