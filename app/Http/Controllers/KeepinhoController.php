@@ -21,7 +21,12 @@ class KeepinhoController extends Controller
         formulário. Porém, a Model vai ficar apenas
         com aqueles listados no $fillable.
         */
-        Nota::create($request->all());
+        $dados = $request->validate([
+            'titulo' => 'required',
+            'texto' => 'required',
+        ]);
+
+        Nota::create($dados);
         return redirect()->route('keep');
     }
 
@@ -37,5 +42,10 @@ class KeepinhoController extends Controller
         return view('keepinho.editar', [
             'nota' => $nota,
         ]);
+    }
+
+    public function apagar(Nota $nota) {
+        $nota->delete();
+        return redirect()->route('keep');
     }
 }
