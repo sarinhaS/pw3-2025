@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutenticaController;
 use App\Http\Controllers\CalculosController;
 use App\Http\Controllers\KeepinhoController;
 use App\Http\Controllers\ProdutosController;
@@ -45,6 +46,10 @@ Route::prefix('/keep')->group(function () {
     Route::get('/restaurar/{nota}', [KeepinhoController::class, 'restaurar'])->name('keep.restaurar');
 });
 
+<<<<<<< HEAD
+Route::get('/autenticar', [AutenticaController::class,'index'])->name('autentica');
+Route::post('/autenticar/gravar', [AutenticaController::class,'gravar'])->name('autentica.gravar');
+=======
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -53,3 +58,4 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('produtos', ProdutosController::class);
 require __DIR__ . '/auth.php';
+>>>>>>> 89b648e6b4a02f855ac6e3360c6b4601fe7cfa3e
