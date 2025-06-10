@@ -5,16 +5,42 @@
         </h2>
     </x-slot>
 
-    <x-guest-layout>
-    <form method="POST" action="{{ route('produtos.store') }}">
-        @csrf
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                        <form method="POST" action="{{ route('produtos.store') }}">
+                            @csrf
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="nome" :value="__('Nome')" />
-            <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome" :value="old('nome')" required autofocus autocomplete="nome" />
-            <x-input-error :messages="$errors->get('nome')" class="mt-2" />
+                            <!-- Name -->
+                            <div>
+                                <x-input-label for="nome" :value="__('Nome')" />
+                                <x-text-input id="nome" class="block mt-1" type="text" name="nome" :value="old('nome')" required autofocus autocomplete="nome" />
+                                <x-input-error :messages="$errors->get('nome')" class="mt-2" />
+                            </div>
+
+                            <!-- Preço -->
+                            <div>
+                                <x-input-label for="preco" :value="__('Preço')" />
+                                <x-text-input id="preco" class="block mt-1" type="number" name="preco" :value="old('preco')" required autofocus autocomplete="preco" />
+                                <x-input-error :messages="$errors->get('preco')" class="mt-2" />
+                            </div>
+
+                            <!-- Descrição -->
+                            <div>
+                                <x-input-label for="descricao" :value="__('Descrição')" />
+                                <x-textarea id="descricao" class="block mt-1" name="descricao" required autofocus autocomplete="descricao">{{ old('descricao') }}</x-textarea>
+                                <x-input-error :messages="$errors->get('descricao')" class="mt-2" />
+                            </div>
+
+                            <x-primary-button class="my-5">
+                                Gravar Produto
+                            </x-primary-button>
+
+
+                        </form>
+                </div>
+            </div>
         </div>
-    </form>
-    </x-guest-layout>
+    </div>        
 </x-app-layout>
