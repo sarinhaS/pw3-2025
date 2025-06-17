@@ -14,7 +14,18 @@
                         + Produto
                     </x-link-button>
 
+                    @foreach ($produtos as $produto)
+                        <div style="border: 1px solid gray; margin: 10px;">
+                            {{ $produto->nome }}  
+                            <br>
+                            {{ $produto->preco }}
+                            <br>
+                            {{ $produto->descricao }}
+                            
+                            <img src="{{ asset('storage/' . $produto->imagem) }}" alt="" style="margin: 0 20px">
+                        </div>
 
+                    @endforeach
                     
                 </div>
             </div>
