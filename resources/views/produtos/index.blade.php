@@ -16,15 +16,24 @@
 
                     @foreach ($produtos as $produto)
                         <div style="border: 1px solid gray; margin: 10px;">
+                            <strong><label for="nome">Nome: </label></strong>
                             {{ $produto->nome }}  
                             <br>
-                            {{ $produto->preco }}
+                            <strong><label for="preco">Preço: </label></strong>
+                            {{ 'R$' . number_format($produto->preco, '2', ',', '.') }}
                             <br>
+                            <strong><label for="descricao">Descrição: </label></strong>
                             {{ $produto->descricao }}
-                            
-                            <img src="{{ asset('storage/' . $produto->imagem) }}" alt="" style="margin: 0 20px">
-                        </div>
 
+                            <br>
+                            <img src="{{ asset('storage/' . $produto->imagem) }}" alt="" style="margin: 0 20px">
+                            <br>
+
+                            <x-link-button href="{{ route('carrinho.store', ['id' => $produto->id]) }}">
+                                Adicionar ao carrinho
+                            </x-link-button>
+                        
+                        </div>
                     @endforeach
                     
                 </div>

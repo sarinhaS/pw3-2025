@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AutenticaController;
 use App\Http\Controllers\CalculosController;
+use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\KeepinhoController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ProfileController;
@@ -56,4 +57,9 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('produtos', ProdutosController::class);
 
+Route::prefix('/carrinho')->group(function(){
+    Route::get('/', [CarrinhoController::class, 'index'])->name('carrinho');
+    Route::get('/store/{id}', [CarrinhoController::class, 'store'])->name('carrinho.store');
+    Route::get('/delete/{id}', [CarrinhoController::class, 'delete'])->name('carrinho.delete');
+});
 require __DIR__ . '/auth.php';
