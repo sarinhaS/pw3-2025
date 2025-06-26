@@ -11,11 +11,7 @@ class AutenticarRequest extends FormRequest
      */
     public function authorize(): bool
     {
-<<<<<<< HEAD
         return false;
-=======
-        return true;
->>>>>>> 89b648e6b4a02f855ac6e3360c6b4601fe7cfa3e
     }
 
     /**
@@ -28,11 +24,7 @@ class AutenticarRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email',
-<<<<<<< HEAD
             'password' => 'required',
-=======
-            'password' => 'required|confirmed',
->>>>>>> 89b648e6b4a02f855ac6e3360c6b4601fe7cfa3e
         ];
     }
 }
