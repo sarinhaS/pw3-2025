@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Categoria extends Authenticatable
 {
     use HasFactory, Notifiable;
+    protected $fillable = ['name'];
     public function produtos():HasMany
     {
         return $this->HasMany(Produto::class);

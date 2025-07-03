@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProdutosRequest;
 use App\Models\Produto;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class ProdutosController extends Controller
@@ -14,10 +15,21 @@ class ProdutosController extends Controller
     public function index()
     {
         $produtos = Produto::all();
+        $products = Produto::with('category')->get(); // Eager loading
+
         
         return view('produtos.index',[
             'produtos' => $produtos,
         ]);
+    }
+
+    public function porCategoria($id)
+    {
+        $categories = Categoria::all();
+        $category = Categoria::with('products')->findOrFail($id);
+        $products = $category->products;
+
+        return view('produtos.index', compact('categories', 'products', 'category'));
     }
 
     /**

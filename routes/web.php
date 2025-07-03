@@ -62,4 +62,8 @@ Route::prefix('/carrinho')->group(function(){
     Route::get('/store/{id}', [CarrinhoController::class, 'store'])->name('carrinho.store');
     Route::get('/delete/{id}', [CarrinhoController::class, 'delete'])->name('carrinho.delete');
 });
+
+
+Route::get('/produtos', [ProdutosController::class, 'index'])->name('produtos.index');
+Route::get('/produtos/categoria/{id}', [ProdutosController::class, 'porCategoria'])->name('produtos.porCategoria');
 require __DIR__ . '/auth.php';
