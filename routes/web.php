@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutenticaController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CalculosController;
 use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\KeepinhoController;
@@ -66,4 +67,11 @@ Route::prefix('/carrinho')->group(function(){
 
 Route::get('/produtos', [ProdutosController::class, 'index'])->name('produtos.index');
 Route::get('/produtos/categoria/{id}', [ProdutosController::class, 'porCategoria'])->name('produtos.porCategoria');
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/categoria/{id}', [BlogController::class, 'categoria'])->name('blog.categoria');
+Route::get('/post/{id}', [BlogController::class, 'post'])->name('blog.post');
+Route::post('/comment', [BlogController::class, 'store'])->name('blog.store');
+
+
 require __DIR__ . '/auth.php';

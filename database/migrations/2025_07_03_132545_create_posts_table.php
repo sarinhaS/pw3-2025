@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->mediumText('content');
-            $table->timestamps();
-
+            
+            // Chaves estrangeiras
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 
